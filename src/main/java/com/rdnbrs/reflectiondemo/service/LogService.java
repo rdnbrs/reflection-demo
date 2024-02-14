@@ -1,6 +1,7 @@
 package com.rdnbrs.reflectiondemo.service;
 
 import com.rdnbrs.reflectiondemo.entity.TestEntity;
+import com.rdnbrs.reflectiondemo.repository.TestRepository;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +21,7 @@ public class LogService {
     @SneakyThrows
     public void logInfo(String string) {
         log.info(string);
-        Object repositoryBean = applicationContext.getBean("testRepository");
-        Method method = repositoryBean.getClass().getMethod("findAll");
-        method.invoke(repositoryBean);
+        TestRepository repositoryBean = (TestRepository) applicationContext.getBean("testRepository");
+        repositoryBean.findAll();
     }
 }
