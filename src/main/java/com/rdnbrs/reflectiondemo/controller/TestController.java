@@ -21,8 +21,8 @@ public class TestController {
     public void test() throws Exception {
         Class<?> c = Class.forName("com.rdnbrs.reflectiondemo.service.OperationService");
         Method method = c.getDeclaredMethod("requestCheck");
-        Constructor<?> conString = c.getConstructor(LogService.class, ApplicationContext.class);
-        method.invoke(conString.newInstance(new LogService(), applicationContext));
+        Constructor<?> conString = c.getConstructor(ApplicationContext.class);
+        method.invoke(conString.newInstance(applicationContext));
     }
 
 }
