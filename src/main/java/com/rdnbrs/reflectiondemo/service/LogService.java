@@ -6,7 +6,6 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -19,10 +18,10 @@ public class LogService {
     private final ApplicationContext applicationContext;
 
     @SneakyThrows
-    public void logInfo(String string){
+    public void logInfo(String string) {
         log.info(string);
         Object repositoryBean = applicationContext.getBean("testRepository");
         Method method = repositoryBean.getClass().getMethod("findAll");
-        List<TestEntity> testList = (List<TestEntity>) method.invoke(repositoryBean);
+        method.invoke(repositoryBean);
     }
 }

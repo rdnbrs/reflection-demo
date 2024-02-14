@@ -1,7 +1,7 @@
 package com.rdnbrs.reflectiondemo.controller;
 
-import com.rdnbrs.reflectiondemo.service.LogService;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +17,9 @@ public class TestController {
 
     private final ApplicationContext applicationContext;
 
+    @SneakyThrows
     @PostMapping("/")
-    public void test() throws Exception {
+    public void test() {
         Class<?> c = Class.forName("com.rdnbrs.reflectiondemo.service.OperationService");
         Method method = c.getDeclaredMethod("requestCheck");
         Constructor<?> conString = c.getConstructor(ApplicationContext.class);
